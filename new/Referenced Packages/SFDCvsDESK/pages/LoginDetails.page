@@ -1,0 +1,92 @@
+<apex:page sidebar="false" controller="SFtoDesk.LoginDetailsController" docType="html-5.0">
+ <head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h3>Login Into Desk.Com Info</h3>
+  <apex:form id="form">
+    <apex:pageMessages />
+  <apex:outputPanel rendered="{!if(loginInfo.name==null,true,false)}">
+    <div class="form-group">
+      <label for="UserName">User Name</label>
+      <apex:inputfield type="text" styleclass="form-control" id="UserName"   value="{!loginInfo.SFtoDesk__username__c}" required="true" />
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <apex:inputfield styleclass="form-control" id="pwd"  value="{!loginInfo.SFtoDesk__Password__c}" required="true"/>
+    </div>
+     <div class="form-group">
+      <label for="token">Token:</label>
+      <apex:inputfield styleclass="form-control" id="token"  value="{!loginInfo.SFtoDesk__token__c}" required="true"/>
+    </div>
+     <div class="form-group">
+      <label for="tokenSecret">TokenSecret:</label>
+     <apex:inputfield styleclass="form-control" id="tokenSecret"  value="{!loginInfo.SFtoDesk__tokenSecret__c}"  required="true"/>
+    </div>
+     <div class="form-group">
+      <label for="consumerKey">ConsumerKey:</label>
+      <apex:inputfield styleclass="form-control" id="consumerKey"  value="{!loginInfo.SFtoDesk__consumerKey__c}" required="true"/>
+    </div>
+     <div class="form-group">
+      <label for="consumerSecret">ConsumerSecret:</label>
+      <apex:inputfield styleclass="form-control" id="consumerSecret"  value="{!loginInfo.SFtoDesk__consumerSecret__c}" required="true"/>
+    </div>
+     <div class="form-group">
+      <label for="subdomain">Subdomain:</label>
+      <apex:inputfield styleclass="form-control" id="subdomain" value="{!loginInfo.SFtoDesk__subdomain__c}" required="true"/>
+    </div>
+    <div class="form-group">
+      <label for="endpoint">Endpoint:</label>
+      <apex:inputfield styleclass="form-control" id="endpoint" value="{!loginInfo.SFtoDesk__endpoint__c}" required="true"/>
+    </div>
+  
+    <apex:commandButton value="Save" action="{!SaveLoginDetails}" reRender="form" style="margin-left:400px"/>
+ </apex:outputPanel> 
+ <apex:outputPanel rendered="{!if(loginInfo.name!=null,true,false)}">
+    <div class="form-group">
+      <label for="UserName">User Name</label>
+      <input type="email" class="form-control" id="UserName" placeholder="Enter username" value="{!loginInfo.SFtoDesk__username__c}" readonly="true"/>
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="text" class="form-control" id="pwd" placeholder="Enter password" value="{!loginInfo.SFtoDesk__Password__c}" readonly="true"/>
+    </div>
+     <div class="form-group">
+      <label for="token">Token:</label>
+      <input type="text" class="form-control" id="token" placeholder="Enter token" value="{!loginInfo.Token__c}" readonly="true"/>
+    </div>
+     <div class="form-group">
+      <label for="tokenSecret">TokenSecret:</label>
+      <input type="text" class="form-control" id="tokenSecret" placeholder="Enter tokenSecret" value="{!loginInfo.SFtoDesk__tokenSecret__c}" readonly="true"/>
+    </div>
+     <div class="form-group">
+      <label for="consumerKey">ConsumerKey:</label>
+      <input type="text" class="form-control" id="consumerKey" placeholder="Enter consumerkey" value="{!loginInfo.SFtoDesk__consumerKey__c}" readonly="true"/>
+    </div>
+     <div class="form-group">
+      <label for="consumerSecret">ConsumerSecret:</label>
+      <input type="text" class="form-control" id="consumerSecret" placeholder="Enter consumersecret" value="{!loginInfo.SFtoDesk__consumerSecret__c}" readonly="true"/>
+    </div>
+     <div class="form-group">
+      <label for="subdomain">Subdomain:</label>
+      <input type="text" class="form-control" id="subdomain" placeholder="Enter subdomain" value="{!loginInfo.SFtoDesk__subdomain__c}" readonly="true"/>
+    </div>
+    <div class="form-group">
+      <label for="endpoint">Endpoint:</label>
+      <input type="text" class="form-control" id="endpoint" placeholder="Enter endpoint" value="{!loginInfo.SFtoDesk__endpoint__c}" readonly="true"/>
+    </div>
+  
+    <apex:commandButton value="Edit" action="{!edit}" reRender="form" style="margin-left:400px"/>
+ </apex:outputPanel>     
+  </apex:form>
+</div>
+
+</body>
+</apex:page>

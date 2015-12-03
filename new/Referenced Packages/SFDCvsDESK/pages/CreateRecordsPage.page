@@ -1,0 +1,126 @@
+<apex:page id="pageId" standardStylesheets="false" showHeader="true" sidebar="false" applyHTMLTag="true" controller="SFtoDesk.SFClient" tabStyle="desk_com_sync__tab">
+ <apex:form >
+<apex:pageMessages />
+<head>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+
+
+  
+
+</head>
+<style>
+
+.btn {
+  background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  -webkit-border-radius: 14;
+  -moz-border-radius:14;
+  border-radius: 14px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 10px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+
+</style>
+ <style>
+        .progressBar{
+            background-color: #f8f8f8;
+            border:1px solid #DDDDDD;
+            height: 19px;
+            width: 300px;
+            -moz-border-radius: 5px; 
+            -webkit-border-radius: 5px;
+        }
+        .progress{
+            background-color: #F7B64B;
+            border:1px solid #E78F08;
+            height: 100%;
+            margin: -1px;
+            text-align: center;
+            -moz-border-radius: 5px; 
+            -webkit-border-radius: 5px;
+            line-height: 18px;
+        }
+    </style>
+  
+
+
+
+<Apex:sectionHeader title="Create Data in Desk.Com" />
+ <apex:actionPoller rerender="jobs" interval="5" />
+ <apex:outputPanel id="jobs">   
+
+<div class="container">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th> Object Type </th>
+         <th>Status</th>
+        <th>Progress</th>
+        
+         
+      </tr>
+    </thead>
+     <tbody>
+      <tr>
+        <td> <apex:commandButton value="Sync Customer"  disabled="{!isEnableCustomerbutton}" action="{!createCustomerbyBatch}" styleClass="btn" reRender="jobs"/></td>
+         <td>{!customerStatus}</td>
+          <td>
+       
+          <div class="progressBar">
+                    <div class="progress" style="width:{!CustomerBatchstatus}%">
+                        {!CustomerBatchstatus}% Completed
+                    </div>
+                </div>
+          </td>       
+     
+        
+      </tr>
+       <tr>
+        <td>  <apex:commandButton value="Sync Case" styleClass="btn" action="{!createCasebyBatch}" reRender="jobs" disabled="{!isEnablecasebutton}"/> 
+                  <!--   <apex:outputLink value="/apex/customers" target="_blank">Get Customers Details</apex:outputLink> --> </td>
+          <td>{!status}</td>
+         <td>
+        
+          <div class="progressBar">
+                    <div class="progress" style="width:{!Batchstatus}%; ">
+                       {!Batchstatus}% Completed
+                    </div>
+                </div>
+          </td>   
+       
+        
+      </tr>
+     
+    </tbody>
+  </table>
+    
+ 
+   <br/>
+      
+        <br/>
+     
+    
+  
+  </div>
+  </apex:outputPanel>  
+   </apex:form>   
+
+</apex:page>

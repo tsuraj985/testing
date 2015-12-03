@@ -1,0 +1,9 @@
+<apex:page standardController="St_Judes_University__c" tabStyle="St_Judes_University__c" extensions="ListOfStudentsinClass">
+  <apex:sectionHeader title="Error"/>
+    <apex:outputpanel rendered="{!flag}" > These Courses dont have professors in them. </apex:outputpanel>
+    <apex:pageBlock >
+        <apex:pageBlockTable value="{!Courses}" var="course">
+            <apex:column value="{!course.Name}"/>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:page>

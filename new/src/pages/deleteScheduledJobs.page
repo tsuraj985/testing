@@ -1,0 +1,21 @@
+<apex:page controller="deleteCronJobs">
+<h1 style="font-size:23px; font-weight: lighter; padding-top: 10px;">All Scheduled Jobs</h1>
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection >
+                <apex:pageBlockTable value="{!AllJobs}" var="Job" id="test">
+                    <apex:column headerValue="Action">
+                        <apex:commandLink value="Delete" action="{!deleteJob}" reRender="test" immediate="true">
+                            <apex:param value="{!Job.CronJobDetail.Id}" name="Id" />
+                        </apex:commandLink>
+                    </apex:column>
+                    <apex:column headerValue="Name" value="{!Job.CronJobDetail.Name}" />
+                   <apex:column headerValue="Start Time" value="{!Job.StartTime}"/>
+                   <apex:column headerValue="End Time" value="{!Job.EndTime}"/>
+                   <apex:column headerValue="Owner Name" value="{!Job.OwnerId}">
+                   </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageblockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

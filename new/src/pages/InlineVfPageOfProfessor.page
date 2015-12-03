@@ -1,0 +1,9 @@
+<apex:page standardController="Professor__c" extensions="InlineVfPageProfessorController">
+    <apex:sectionHeader title="All student names"/>
+        <apex:outputpanel rendered="{!flag}" > These are the students which are teached by teacher. </apex:outputpanel>
+            <apex:pageBlock >
+                <apex:pageBlockTable value="{!AllStudents}" var="student">
+            <apex:column value="{!student.Name}"/>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:page>
